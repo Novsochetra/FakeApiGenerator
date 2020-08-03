@@ -1,4 +1,5 @@
 const fs = require("fs");
+const config = require("../../config/env");
 
 class Generator {
   _name = "";
@@ -8,6 +9,10 @@ class Generator {
   }
 
   getRandom() {}
+
+  getRandomId() {
+    return Math.floor(Math.random() * Math.floor(config.TOTAL_DATA_SIZE + 1));
+  }
 
   output(fileName, data, byId) {
     const dest = `${__dirname}/../../output/${fileName}.json`;

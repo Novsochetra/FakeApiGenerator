@@ -1,6 +1,6 @@
-const Generator = require("../generator");
 const faker = require("faker");
-const Company = require(".");
+const config = require("../../config/env");
+const Generator = require("../generator");
 const User = require(".");
 const CompanyGenerator = require("../company/companyGenerator");
 const AddressGenerator = require("../address/addressGenerator");
@@ -18,7 +18,7 @@ class UserGenerator extends Generator {
     const address = new AddressGenerator();
 
     return new User({
-      id: faker.random.uuid(),
+      id: this.getRandomId(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
@@ -29,8 +29,8 @@ class UserGenerator extends Generator {
     });
   }
 
-  generate(amount = 100) {
-    for (let index = 0; index < amount; index++) {
+  generate() {
+    for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let user = this.getRandom();
 
       this._data.push(user.toJson());

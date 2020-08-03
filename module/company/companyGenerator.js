@@ -1,6 +1,5 @@
 const Generator = require("../generator");
-const Address = require(".");
-const Geo = require("../geo");
+const config = require("../../config/env");
 const faker = require("faker");
 const Company = require(".");
 
@@ -14,14 +13,14 @@ class CompanyGenerator extends Generator {
 
   getRandom() {
     return new Company({
-      id: faker.random.uuid(),
+      id: this.getRandomId(),
       name: faker.company.companyName(),
       bs: faker.company.bs(),
     });
   }
 
-  generate(amount = 100) {
-    for (let index = 0; index < amount; index++) {
+  generate() {
+    for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let company = this.getRandom();
 
       this._data.push(company.toJson());

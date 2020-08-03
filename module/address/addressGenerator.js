@@ -1,8 +1,9 @@
+const { fake } = require("faker");
+const config = require("../../config/env");
 const Generator = require("../generator");
 const Address = require(".");
 const Geo = require("../geo");
 const faker = require("faker");
-const { fake } = require("faker");
 
 class AddressGenerator extends Generator {
   _data = [];
@@ -14,7 +15,7 @@ class AddressGenerator extends Generator {
 
   getRandom() {
     let geo = new Geo({
-      id: faker.random.uuid(),
+      id: this.getRandomId(),
       lat: faker.address.latitude(),
       lng: faker.address.longitude(),
     }).toJson();
@@ -28,8 +29,8 @@ class AddressGenerator extends Generator {
     });
   }
 
-  generate(amount = 100) {
-    for (let index = 0; index < amount; index++) {
+  generate() {
+    for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let address = this.getRandom();
       this._data.push(address.toJson());
       this._byId[address._id] = address.toJson();

@@ -1,4 +1,5 @@
 const Generator = require("../generator");
+const config = require("../../config/env");
 const Geo = require(".");
 const faker = require("faker");
 
@@ -12,14 +13,14 @@ class GeoGenerator extends Generator {
 
   getRandom() {
     return new Geo({
-      id: faker.random.uuid(),
+      id: this.getRandomId(),
       lat: faker.address.latitude(),
       lng: faker.address.longitude(),
     });
   }
 
-  generate(amount = 100) {
-    for (let index = 0; index < amount; index++) {
+  generate() {
+    for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let geo = this.getRandom();
 
       this._data.push(geo.toJson());
