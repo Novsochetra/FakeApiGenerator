@@ -13,7 +13,7 @@ class AddressGenerator extends Generator {
     super({ name: "address" });
   }
 
-  getRandom() {
+  getRandom(id) {
     let geo = new Geo({
       id: this.getRandomId(),
       lat: faker.address.latitude(),
@@ -21,7 +21,7 @@ class AddressGenerator extends Generator {
     }).toJson();
 
     return new Address({
-      id: faker.random.uuid(),
+      id,
       street: faker.address.streetName(),
       city: faker.address.city(),
       zipcode: faker.address.zipCode(),
@@ -31,7 +31,7 @@ class AddressGenerator extends Generator {
 
   generate() {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
-      let address = this.getRandom();
+      let address = this.getRandom(index);
       this._data.push(address.toJson());
       this._byId[address._id] = address.toJson();
     }

@@ -13,25 +13,27 @@ class UserGenerator extends Generator {
     super({ name: "users" });
   }
 
-  getRandom() {
+  getRandom(id) {
     const company = new CompanyGenerator();
     const address = new AddressGenerator();
+    const companyId = this.getRandomId();
+    const addressId = this.getRandomId();
 
     return new User({
-      id: this.getRandomId(),
+      id: id,
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
       phone: faker.phone.phoneNumber(),
       website: faker.helpers.userCard().website,
-      company: company.getRandom().toJson(),
-      address: address.getRandom().toJson(),
+      company: company.getRandom(companyId).toJson(),
+      address: address.getRandom(addressId).toJson(),
     });
   }
 
   generate() {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
-      let user = this.getRandom();
+      let user = this.getRandom(index);
 
       this._data.push(user.toJson());
       this._byId[user._id] = user.toJson();

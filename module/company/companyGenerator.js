@@ -11,9 +11,9 @@ class CompanyGenerator extends Generator {
     super({ name: "companies" });
   }
 
-  getRandom() {
+  getRandom(id) {
     return new Company({
-      id: this.getRandomId(),
+      id,
       name: faker.company.companyName(),
       bs: faker.company.bs(),
     });
@@ -21,7 +21,7 @@ class CompanyGenerator extends Generator {
 
   generate() {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
-      let company = this.getRandom();
+      let company = this.getRandom(index);
 
       this._data.push(company.toJson());
       this._byId[company._id] = company.toJson();
