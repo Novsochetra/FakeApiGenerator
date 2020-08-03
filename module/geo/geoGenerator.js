@@ -23,7 +23,7 @@ class GeoGenerator extends Generator {
       let geo = this.getRandom();
 
       this._data.push(geo.toJson());
-      this._byId[geo.id] = geo.toJson();
+      this._byId[geo._id] = geo.toJson();
     }
 
     return this._data;

@@ -34,7 +34,7 @@ class UserGenerator extends Generator {
       let user = this.getRandom();
 
       this._data.push(user.toJson());
-      this._byId[user.id] = user.toJson();
+      this._byId[user._id] = user.toJson();
     }
 
     return this._data;

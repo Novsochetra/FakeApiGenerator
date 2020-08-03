@@ -9,14 +9,14 @@ class User {
     website,
     company,
   }) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.address = address;
-    this.phone = phone;
-    this.website = website;
-    this.company = company;
+    this._id = id;
+    this._firstName = firstName;
+    this._lastName = lastName;
+    this._email = email;
+    this._address = address;
+    this._phone = phone;
+    this._website = website;
+    this._company = company;
   }
 
   getFieldNames() {
@@ -34,9 +34,14 @@ class User {
 
   toJson() {
     return {
-      id: this.id,
-      name: this.name,
-      bs: this.bs,
+      id: this._id,
+      firstName: this._firstName,
+      lastName: this._lastName,
+      email: this._email,
+      address: this._address,
+      phone: this._phone,
+      website: this._website,
+      company: this._company,
     };
   }
 }
