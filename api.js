@@ -8,8 +8,6 @@ let company = new CompanyGenerator();
 let geo = new GeoGenerator();
 let user = new UserGenerator();
 
-console.log(user.getRandom());
-
 ad.generate(5);
 ad.output("addresses");
 
