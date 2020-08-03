@@ -1,0 +1,29 @@
+{
+  "name": "nodejsonapi",
+  "version": "1.0.0",
+  "description": "Fake Json API",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --project ./",
+    "server": "npm run build && node ./build/server.js",
+    "user": "npm run build && node ./build/module/user/index.js"
+  },
+  "keywords": [
+    "json",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/faker": "^4.1.12",
+    "@types/node": "^14.0.27",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
