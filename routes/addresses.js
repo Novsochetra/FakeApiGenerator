@@ -4,8 +4,12 @@ const AddressModel = require("../model/address");
 const router = express.Router();
 
 router.route("/addresses").get(function (req, res, next) {
+  const {
+    query: { page, per_page },
+  } = req;
+  let paginateData = AddressModel.paginate(page, per_page);
   res.json({
-    data: AddressModel.all(req.query["page"], req.query["per_page"]),
+    data: paginateData,
     status: res.statusCode,
   });
 });

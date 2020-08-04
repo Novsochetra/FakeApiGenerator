@@ -1,13 +1,16 @@
 const express = require("express");
 const fs = require("fs");
+
 const router = express.Router();
+const GeoModel = require("../model/geo");
 
 router.route("/geos").get(function (req, res, next) {
-  const des = __dirname + "/../output/geos.json";
-  let rawData = fs.readFileSync(des);
-  let formattedData = JSON.parse(rawData);
+  const {
+    query: { page, per_page },
+  } = req;
+  const paginateData = GeoModel.paginate(page, per_page);
 
-  res.json({ data: formattedData, status: res.statusCode });
+  res.json({ data: paginateData, status: res.statusCode });
 });
 
 router.route("/geos/:id").get(function (req, res, next) {

@@ -1,13 +1,15 @@
 const express = require("express");
 const fs = require("fs");
+const CompanyModel = require("../model/company");
 const router = express.Router();
 
 router.route("/companies").get(function (req, res, next) {
-  const des = __dirname + "/../output/companies.json";
-  let rawData = fs.readFileSync(des);
-  let formattedData = JSON.parse(rawData);
+  const {
+    query: { page, per_page },
+  } = req;
+  let paginateData = CompanyModel.paginate(page, per_page);
 
-  res.json({ data: formattedData, status: res.statusCode });
+  res.json({ data: paginateData, status: res.statusCode });
 });
 
 router.route("/companies/:id").get(function (req, res, next) {
