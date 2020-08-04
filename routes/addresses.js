@@ -1,13 +1,13 @@
 const express = require("express");
 const fs = require("fs");
+const AddressModel = require("../model/address");
 const router = express.Router();
 
 router.route("/addresses").get(function (req, res, next) {
-  const des = __dirname + "/../output/addresses.json";
-  let rawData = fs.readFileSync(des);
-  let formattedData = JSON.parse(rawData);
-
-  res.json({ data: formattedData, status: res.statusCode });
+  res.json({
+    data: AddressModel.all(req.query["page"], req.query["per_page"]),
+    status: res.statusCode,
+  });
 });
 
 router.route("/addresses/:id").get(function (req, res, next) {
