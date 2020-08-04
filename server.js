@@ -14,10 +14,16 @@ mainApp.set("view engine", "ejs");
 
 app.use(cors());
 mainApp.use("/api", baseRouter.all());
-mainApp.use(function (req, res, next) {
-  res.status(404);
 
-  res.format({
+mainApp.use(function (req, res, next) {
+  if (res.statusCode === 500) {
+    return render500Page(req, res);
+  }
+  return render404Page(req, res);
+});
+
+const render404Page = (req, res) => {
+  return res.format({
     html: function () {
       res.render("404", { url: req.url });
     },
@@ -28,7 +34,21 @@ mainApp.use(function (req, res, next) {
       res.type("txt").send("Not found");
     },
   });
-});
+};
+
+const render500Page = (req, res) => {
+  return res.format({
+    html: function () {
+      res.render("500", { url: req.url });
+    },
+    json: function () {
+      res.json({ error: "Not found" });
+    },
+    default: function () {
+      res.type("txt").send("Not found");
+    },
+  });
+};
 
 app.use(vhost(config.HOST_NAME, mainApp));
 
