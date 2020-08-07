@@ -1,9 +1,9 @@
-const express = require("express");
-const vhost = require("vhost");
-const cors = require("cors");
+import express, { Request, Response } from "express";
+import vhost from "vhost";
+import cors from "cors";
 
-const BaseRouter = require("./routes");
-const config = require("./config/env");
+import BaseRouter from "./routes/index";
+import config from "./config/env";
 
 const app = express();
 const mainApp = express();
@@ -15,14 +15,14 @@ mainApp.set("view engine", "ejs");
 app.use(cors());
 mainApp.use("/api", baseRouter.all());
 
-mainApp.use(function (req, res, next) {
+mainApp.use(function (req: Request, res: Response): any {
   if (res.statusCode === 500) {
     return render500Page(req, res);
   }
   return render404Page(req, res);
 });
 
-const render404Page = (req, res) => {
+const render404Page = (req: Request, res: Response): any => {
   return res.format({
     html: function () {
       res.render("404", { url: req.url });
@@ -36,7 +36,7 @@ const render404Page = (req, res) => {
   });
 };
 
-const render500Page = (req, res) => {
+const render500Page = (req: Request, res: Response): any => {
   return res.format({
     html: function () {
       res.render("500", { url: req.url });
@@ -52,7 +52,7 @@ const render500Page = (req, res) => {
 
 app.use(vhost(config.HOST_NAME, mainApp));
 
-app.listen(config.PORT, (req, res) => {
+app.listen(config.PORT, (_req: Request, _res: Response): void => {
   console.log(
     `Example app listening at http://${config.HOST_NAME}:${config.PORT}`
   );
