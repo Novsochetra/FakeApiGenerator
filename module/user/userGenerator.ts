@@ -26,8 +26,8 @@ class UserGenerator extends Generator {
       email: faker.internet.email(),
       phone: faker.phone.phoneNumber(),
       website: faker.helpers.userCard().website,
-      company: company.getRandom(companyId).toJson(),
-      address: address.getRandom(addressId).toJson(),
+      company: company.getRandom(companyId),
+      address: address.getRandom(addressId),
     });
   }
 

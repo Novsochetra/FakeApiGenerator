@@ -1,12 +1,15 @@
+import Company from "../company";
+import Address from "../address";
+
 class User {
   _id: number;
   _firstName: string;
   _lastName: string;
   _email: string;
-  _address: any;
+  _address: Address;
   _phone: string;
   _website: string;
-  _company: any;
+  _company: Company;
 
   constructor({
     id,
@@ -22,10 +25,10 @@ class User {
     firstName: string;
     lastName: string;
     email: string;
-    address: any;
+    address: Address;
     phone: string;
     website: string;
-    company: any;
+    company: Company;
   }) {
     this._id = id;
     this._firstName = firstName;
@@ -56,10 +59,10 @@ class User {
       firstName: this._firstName,
       lastName: this._lastName,
       email: this._email,
-      address: this._address,
+      address: this._address.toJson(),
       phone: this._phone,
       website: this._website,
-      company: this._company,
+      company: this._company.toJson(),
     };
   }
 }
