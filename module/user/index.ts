@@ -1,5 +1,6 @@
 import Company from "../company";
 import Address from "../address";
+import { IUser } from "./interface";
 
 class User {
   _id: number;
@@ -53,7 +54,7 @@ class User {
     ];
   }
 
-  toJson() {
+  toJson(): IUser {
     return {
       id: this._id,
       firstName: this._firstName,

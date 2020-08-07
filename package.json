@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "test": "jest",
+    "tsc": "ts-node ./module/**",
     "build": "tsc --project ./",
     "server": "nodemon server.ts",
     "user": "npm run build && node ./build/module/user/index.js"

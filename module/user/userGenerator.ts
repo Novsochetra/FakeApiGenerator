@@ -4,10 +4,11 @@ import Generator from "../generator";
 import User from ".";
 import CompanyGenerator from "../company/companyGenerator";
 import AddressGenerator from "../address/addressGenerator";
+import { IUser, IUserById } from "./interface";
 
 class UserGenerator extends Generator {
-  _data: any[] = [];
-  _byId: { [key: number]: any } = {};
+  _data: IUser[] = [];
+  _byId: IUserById = {};
 
   constructor() {
     super({ name: "users" });
@@ -31,7 +32,7 @@ class UserGenerator extends Generator {
     });
   }
 
-  generate(): any {
+  generate(): IUser[] {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let user = this.getRandom(index);
 
