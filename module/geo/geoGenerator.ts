@@ -19,7 +19,7 @@ class GeoGenerator extends Generator {
     });
   }
 
-  generate() {
+  generate(): Array<any> {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let geo = this.getRandom();
 

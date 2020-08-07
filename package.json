@@ -4,7 +4,7 @@
   "description": "Fake Json API",
   "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc --project ./",
     "server": "nodemon server.ts",
     "user": "npm run build && node ./build/module/user/index.js"
@@ -23,14 +23,31 @@
     "vhost": "^3.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.7",
     "@types/faker": "^4.1.12",
+    "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
     "@types/vhost": "^3.0.1",
+    "babel-jest": "^26.2.2",
     "jest": "^26.2.2",
     "nodemon": "^2.0.4",
+    "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }

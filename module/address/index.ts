@@ -1,3 +1,5 @@
+import Geo from "../geo";
+
 class Address {
   _id: number;
   _street: string;
@@ -5,7 +7,7 @@ class Address {
   _zipcode: string;
   // TODO:
   // update type geo to geo class
-  _geo: any;
+  _geo: Geo;
 
   constructor({
     id,
@@ -18,7 +20,7 @@ class Address {
     street: string;
     city: string;
     zipcode: string;
-    geo: any;
+    geo: Geo;
   }) {
     this._id = id;
     this._street = street;
@@ -41,7 +43,7 @@ class Address {
       street: this._street,
       city: this._city,
       zipcode: this._zipcode,
-      geo: this._geo,
+      geo: this._geo.toJson(),
     };
   }
 }

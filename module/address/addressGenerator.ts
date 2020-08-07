@@ -21,7 +21,7 @@ class AddressGenerator extends Generator {
       id: this.getRandomId(),
       lat: faker.address.latitude(),
       lng: faker.address.longitude(),
-    }).toJson();
+    });
 
     return new Address({
       id,
