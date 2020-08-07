@@ -1,7 +1,7 @@
 import CompanyGenerator from "../../../module/company/companyGenerator";
 import Company from "../../../module/company";
 
-describe("Module Geo Generator ", () => {
+describe("Module Company Generator ", () => {
   let companyGenerator: CompanyGenerator;
   beforeEach(() => {
     companyGenerator = new CompanyGenerator();
