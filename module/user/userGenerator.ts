@@ -1,19 +1,19 @@
-const faker = require("faker");
-const config = require("../../config/env");
-const Generator = require("../generator");
-const User = require(".");
-const CompanyGenerator = require("../company/companyGenerator");
-const AddressGenerator = require("../address/addressGenerator");
+import faker from "faker";
+import config from "../../config/env";
+import Generator from "../generator";
+import User from ".";
+import CompanyGenerator from "../company/companyGenerator";
+import AddressGenerator from "../address/addressGenerator";
 
 class UserGenerator extends Generator {
-  _data = [];
-  _byId = {};
+  _data: any[] = [];
+  _byId: { [key: number]: any } = {};
 
   constructor() {
     super({ name: "users" });
   }
 
-  getRandom(id) {
+  getRandom(id: number): any {
     const company = new CompanyGenerator();
     const address = new AddressGenerator();
     const companyId = this.getRandomId();
@@ -31,7 +31,7 @@ class UserGenerator extends Generator {
     });
   }
 
-  generate() {
+  generate(): any {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let user = this.getRandom(index);
 
@@ -42,7 +42,7 @@ class UserGenerator extends Generator {
     return this._data;
   }
 
-  output(fileName) {
+  generateJSON(fileName: string): any {
     super.output(fileName, this._data, this._byId);
   }
 
@@ -51,4 +51,4 @@ class UserGenerator extends Generator {
   }
 }
 
-module.exports = UserGenerator;
+export default UserGenerator;

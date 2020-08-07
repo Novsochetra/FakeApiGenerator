@@ -1,19 +1,22 @@
-const { fake } = require("faker");
-const config = require("../../config/env");
-const Generator = require("../generator");
-const Address = require(".");
-const Geo = require("../geo");
-const faker = require("faker");
+import faker from "faker";
+import config from "../../config/env";
+import Generator from "../generator";
+import Address from "./index";
+import Geo from "../geo";
 
 class AddressGenerator extends Generator {
-  _data = [];
-  _byId = {};
+  // TODO:
+  // udpate the type any
+  _data: any = [];
+  _byId: any = {};
 
   constructor() {
     super({ name: "address" });
   }
 
-  getRandom(id) {
+  // TODO:
+  // udpate the type any
+  getRandom(id: number): any {
     let geo = new Geo({
       id: this.getRandomId(),
       lat: faker.address.latitude(),
@@ -39,7 +42,7 @@ class AddressGenerator extends Generator {
     return this._data;
   }
 
-  output(fileName) {
+  generateJSON(fileName: string): any {
     super.output(fileName, this._data, this._byId);
   }
 
@@ -48,4 +51,4 @@ class AddressGenerator extends Generator {
   }
 }
 
-module.exports = AddressGenerator;
+export default AddressGenerator;

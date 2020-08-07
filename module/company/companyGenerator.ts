@@ -1,17 +1,19 @@
-const Generator = require("../generator");
-const config = require("../../config/env");
-const faker = require("faker");
-const Company = require(".");
+import Generator from "../generator";
+import config from "../../config/env";
+import faker from "faker";
+import Company from ".";
 
 class CompanyGenerator extends Generator {
-  _data = [];
-  _byId = {};
+  // TODO:
+  // update the types any
+  _data: any = [];
+  _byId: any = {};
 
   constructor() {
     super({ name: "companies" });
   }
 
-  getRandom(id) {
+  getRandom(id: number): any {
     return new Company({
       id,
       name: faker.company.companyName(),
@@ -30,7 +32,7 @@ class CompanyGenerator extends Generator {
     return this._data;
   }
 
-  output(fileName) {
+  generateJSON(fileName: string): any {
     super.output(fileName, this._data, this._byId);
   }
 
@@ -39,4 +41,4 @@ class CompanyGenerator extends Generator {
   }
 }
 
-module.exports = CompanyGenerator;
+export default CompanyGenerator;

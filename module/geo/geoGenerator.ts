@@ -1,11 +1,11 @@
-const Generator = require("../generator");
-const config = require("../../config/env");
-const Geo = require(".");
-const faker = require("faker");
+import Generator from "../generator";
+import config from "../../config/env";
+import Geo from ".";
+import faker from "faker";
 
 class GeoGenerator extends Generator {
-  _data = [];
-  _byId = {};
+  private _data: Array<any> = [];
+  private _byId: any = {};
 
   constructor() {
     super({ name: "geos" });
@@ -30,7 +30,7 @@ class GeoGenerator extends Generator {
     return this._data;
   }
 
-  output(fileName) {
+  generateJSON(fileName: string): void {
     super.output(fileName, this._data, this._byId);
   }
 
@@ -39,4 +39,4 @@ class GeoGenerator extends Generator {
   }
 }
 
-module.exports = GeoGenerator;
+export default GeoGenerator;

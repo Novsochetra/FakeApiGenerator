@@ -1,11 +1,15 @@
 class Company {
-  constructor({ id, name, bs }) {
+  _id: number;
+  _name: string;
+  _bs: string;
+
+  constructor({ id, name, bs }: { id: number; name: string; bs: string }) {
     this._id = id;
     this._name = name;
     this._bs = bs;
   }
 
-  toJson() {
+  toJson(): any {
     return {
       id: this._id,
       name: this._name,
@@ -14,4 +18,4 @@ class Company {
   }
 }
 
-module.exports = Company;
+export default Company;

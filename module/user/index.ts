@@ -1,4 +1,13 @@
 class User {
+  _id: number;
+  _firstName: string;
+  _lastName: string;
+  _email: string;
+  _address: any;
+  _phone: string;
+  _website: string;
+  _company: any;
+
   constructor({
     id,
     firstName,
@@ -8,6 +17,15 @@ class User {
     phone,
     website,
     company,
+  }: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: any;
+    phone: string;
+    website: string;
+    company: any;
   }) {
     this._id = id;
     this._firstName = firstName;
@@ -45,5 +63,4 @@ class User {
     };
   }
 }
-
-module.exports = User;
+export default User;
