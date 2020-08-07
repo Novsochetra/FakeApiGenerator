@@ -2,12 +2,11 @@ import Generator from "../generator";
 import config from "../../config/env";
 import faker from "faker";
 import Company from ".";
+import { ICompany, ICompanyById } from "./interface";
 
 class CompanyGenerator extends Generator {
-  // TODO:
-  // update the types any
-  _data: any = [];
-  _byId: any = {};
+  _data: ICompany[] = [];
+  _byId: ICompanyById = {};
 
   constructor() {
     super({ name: "companies" });

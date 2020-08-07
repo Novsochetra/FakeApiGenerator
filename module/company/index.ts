@@ -1,3 +1,5 @@
+import { ICompany } from "./interface";
+
 class Company {
   _id: number;
   _name: string;
@@ -9,7 +11,7 @@ class Company {
     this._bs = bs;
   }
 
-  toJson(): any {
+  toJson(): ICompany {
     return {
       id: this._id,
       name: this._name,
