@@ -3,20 +3,17 @@ import config from "../../config/env";
 import Generator from "../generator";
 import Address from "./index";
 import Geo from "../geo";
+import { IAddress, IAddressById } from "./interface";
 
 class AddressGenerator extends Generator {
-  // TODO:
-  // udpate the type any
-  _data: any = [];
-  _byId: any = {};
+  _data: IAddress[] = [];
+  _byId: IAddressById = {};
 
   constructor() {
     super({ name: "address" });
   }
 
-  // TODO:
-  // udpate the type any
-  getRandom(id: number): any {
+  getRandom(id: number): Address {
     let geo = new Geo({
       id: this.getRandomId(),
       lat: faker.address.latitude(),
@@ -32,7 +29,7 @@ class AddressGenerator extends Generator {
     });
   }
 
-  generate() {
+  generate(): IAddress[] {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let address = this.getRandom(index);
       this._data.push(address.toJson());
@@ -46,7 +43,7 @@ class AddressGenerator extends Generator {
     super.output(fileName, this._data, this._byId);
   }
 
-  getAll() {
+  getAll(): IAddress[] {
     return this._data;
   }
 }

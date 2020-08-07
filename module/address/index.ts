@@ -1,12 +1,11 @@
 import Geo from "../geo";
+import { IAddress } from "./interface";
 
 class Address {
   _id: number;
   _street: string;
   _city: string;
   _zipcode: string;
-  // TODO:
-  // update type geo to geo class
   _geo: Geo;
 
   constructor({
@@ -35,9 +34,7 @@ class Address {
     return ["id", "street", "city", "geo"];
   }
 
-  // TODO:
-  // update type return function
-  toJson(): any {
+  toJson(): IAddress {
     return {
       id: this._id,
       street: this._street,
