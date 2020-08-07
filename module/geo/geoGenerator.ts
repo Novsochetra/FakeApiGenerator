@@ -2,10 +2,11 @@ import Generator from "../generator";
 import config from "../../config/env";
 import Geo from ".";
 import faker from "faker";
+import { IGeo, IGeoById } from "./interface";
 
 class GeoGenerator extends Generator {
-  private _data: Array<any> = [];
-  private _byId: any = {};
+  private _data: IGeo[] = [];
+  private _byId: IGeoById = {};
 
   constructor() {
     super({ name: "geos" });
@@ -19,7 +20,7 @@ class GeoGenerator extends Generator {
     });
   }
 
-  generate(): Array<any> {
+  generate(): IGeo[] {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let geo = this.getRandom();
 

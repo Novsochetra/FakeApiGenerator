@@ -1,3 +1,5 @@
+import { IGeo } from "./interface";
+
 class Geo {
   _id: number;
   _lat: string;
@@ -21,7 +23,7 @@ class Geo {
     return ["lat", "lng"];
   }
 
-  toJson(): { id: number; lat: string; lng: string } {
+  toJson(): IGeo {
     return {
       id: this._id,
       lat: this._lat,

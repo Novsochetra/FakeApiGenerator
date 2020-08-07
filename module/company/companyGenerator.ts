@@ -20,7 +20,7 @@ class CompanyGenerator extends Generator {
     });
   }
 
-  generate() {
+  generate(): ICompany[] {
     for (let index = 0; index < config.TOTAL_DATA_SIZE; index++) {
       let company = this.getRandom(index);
 
