@@ -4,6 +4,7 @@
   "description": "Rich Json API",
   "main": "server.ts",
   "scripts": {
+    "postinstall": "yarn build",
     "test": "jest",
     "tsc": "ts-node ./module/**",
     "build": "tsc --project ./",
