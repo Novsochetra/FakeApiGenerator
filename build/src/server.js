@@ -47,15 +47,8 @@ const render500Page = (req, res) => {
         },
     });
 };
-if (app.get('env') == 'development') {
-    app.use(vhost_1.default(env_1.default.HOST_NAME, mainApp));
-    app.use(vhost_1.default(env_1.default.HOST_NAME, mainApp));
-    app.listen(env_1.default.PORT, () => {
-        console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
-    });
-}
-else {
-    mainApp.listen(process.env.PORT || 4000, () => {
-        console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
-    });
-}
+app.use(vhost_1.default(env_1.default.HOST_NAME, mainApp));
+app.use(vhost_1.default(env_1.default.HOST_NAME, mainApp));
+app.listen(env_1.default.PORT, () => {
+    console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
+});
