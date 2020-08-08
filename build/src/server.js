@@ -48,6 +48,6 @@ const render500Page = (req, res) => {
 };
 //app.use(vhost(config.HOST_NAME, mainApp));
 //app.use(vhost(config.HOST_NAME, mainApp));
-mainApp.listen(env_1.default.PORT || 3000, (_req, _res) => {
+mainApp.listen(process.env.PORT || 3000, () => {
     console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
 });
