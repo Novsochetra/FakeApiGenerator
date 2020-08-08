@@ -1,7 +1,7 @@
-import Company from "../../../module/company";
-import User from "../../../module/user";
-import Address from "../../../module/address";
-import Geo from "../../../module/geo";
+import Company from "../../../src/module/company";
+import User from "../../../src/module/user";
+import Address from "../../../src/module/address";
+import Geo from "../../../src/module/geo";
 
 describe("Module Company converter ", () => {
   let company: Company;

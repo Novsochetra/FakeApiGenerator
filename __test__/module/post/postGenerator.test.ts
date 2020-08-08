@@ -1,5 +1,5 @@
-import PostGenerator from "../../../module/post/postGenerator";
-import Post from "../../../module/post";
+import PostGenerator from "../../../src/module/post/postGenerator";
+import Post from "../../../src/module/post";
 
 describe("Module Post Generator ", () => {
   let postGenerator: PostGenerator;

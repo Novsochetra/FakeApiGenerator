@@ -1,5 +1,5 @@
-import AddressGenerator from "../../../module/address/addressGenerator";
-import Address from "../../../module/address";
+import AddressGenerator from "../../../src/module/address/addressGenerator";
+import Address from "../../../src/module/address";
 
 describe("Module Address Generator ", () => {
   let addressGenerator: AddressGenerator;

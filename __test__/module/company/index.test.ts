@@ -1,4 +1,4 @@
-import Company from "../../../module/company";
+import Company from "../../../src/module/company";
 
 describe("Module Company converter ", () => {
   let company: Company;

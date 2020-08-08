@@ -1,5 +1,5 @@
-import Address from "../../../module/address";
-import Geo from "../../../module/geo";
+import Address from "../../../src/module/address";
+import Geo from "../../../src/module/geo";
 
 describe("Module Geo converter ", () => {
   let address: Address;

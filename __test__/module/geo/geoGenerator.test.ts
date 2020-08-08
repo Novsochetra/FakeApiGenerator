@@ -1,5 +1,5 @@
-import GeoGenerator from "../../../module/geo/geoGenerator";
-import Geo from "../../../module/geo";
+import GeoGenerator from "../../../src/module/geo/geoGenerator";
+import Geo from "../../../src/module/geo";
 
 describe("Module Geo Generator ", () => {
   let geoGenerator: GeoGenerator;

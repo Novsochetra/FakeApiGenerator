@@ -1,5 +1,5 @@
-import CompanyGenerator from "../../../module/company/companyGenerator";
-import Company from "../../../module/company";
+import CompanyGenerator from "../../../src/module/company/companyGenerator";
+import Company from "../../../src/module/company";
 
 describe("Module Company Generator ", () => {
   let companyGenerator: CompanyGenerator;

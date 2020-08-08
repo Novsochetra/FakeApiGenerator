@@ -1,4 +1,4 @@
-import Geo from "../../../module/geo";
+import Geo from "../../../src/module/geo";
 
 describe("Module Geo converter ", () => {
   let geo: Geo;

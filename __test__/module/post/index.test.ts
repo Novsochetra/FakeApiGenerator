@@ -1,4 +1,4 @@
-import Post from "../../../module/post";
+import Post from "../../../src/module/post";
 
 describe("Module Geo converter ", () => {
   let post: Post;
