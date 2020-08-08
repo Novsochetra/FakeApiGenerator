@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const vhost_1 = __importDefault(require("vhost"));
 const cors_1 = __importDefault(require("cors"));
 const index_1 = __importDefault(require("./routes/index"));
 const env_1 = __importDefault(require("./config/env"));
@@ -46,8 +47,15 @@ const render500Page = (req, res) => {
         },
     });
 };
-//app.use(vhost(config.HOST_NAME, mainApp));
-//app.use(vhost(config.HOST_NAME, mainApp));
-mainApp.listen(process.env.PORT || 3000, () => {
-    console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
-});
+if (app.get('env') == 'development') {
+    app.use(vhost_1.default(env_1.default.HOST_NAME, mainApp));
+    app.use(vhost_1.default(env_1.default.HOST_NAME, mainApp));
+    app.listen(env_1.default.PORT, () => {
+        console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
+    });
+}
+else {
+    mainApp.listen(process.env.PORT || 4000, () => {
+        console.log(`Example app listening at http://${env_1.default.HOST_NAME}:${env_1.default.PORT}`);
+    });
+}

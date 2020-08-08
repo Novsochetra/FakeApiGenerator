@@ -50,11 +50,20 @@ const render500Page = (req: Request, res: Response): any => {
   });
 };
 
-//app.use(vhost(config.HOST_NAME, mainApp));
-//app.use(vhost(config.HOST_NAME, mainApp));
+if(app.get('env') == 'development') {
+  app.use(vhost(config.HOST_NAME, mainApp));
+  app.use(vhost(config.HOST_NAME, mainApp));
+  
+  app.listen(config.PORT, (): void => {
+    console.log(
+      `Example app listening at http://${config.HOST_NAME}:${config.PORT}`
+    );
+  });
+} else {
+  mainApp.listen(process.env.PORT || 4000, (): void => {
+    console.log(
+      `Example app listening at http://${config.HOST_NAME}:${config.PORT}`
+    );
+  });
+}
 
-mainApp.listen(process.env.PORT || 3000, (): void => {
-  console.log(
-    `Example app listening at http://${config.HOST_NAME}:${config.PORT}`
-  );
-});
