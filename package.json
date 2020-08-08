@@ -8,7 +8,7 @@
     "tsc": "ts-node ./module/**",
     "build": "tsc --project ./",
     "server": "nodemon server.ts",
-    "start": "node server.ts",
+    "start": "cd ./build && node server.js",
     "user": "npm run build && node ./build/module/user/index.js"
   },
   "keywords": [
