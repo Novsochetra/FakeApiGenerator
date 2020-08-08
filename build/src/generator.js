@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const geoGenerator_1 = __importDefault(require("./module/geo/geoGenerator"));
+const companyGenerator_1 = __importDefault(require("./module/company/companyGenerator"));
+const addressGenerator_1 = __importDefault(require("./module/address/addressGenerator"));
+const userGenerator_1 = __importDefault(require("./module/user/userGenerator"));
+const postGenerator_1 = __importDefault(require("./module/post/postGenerator"));
+let ad = new addressGenerator_1.default();
+let company = new companyGenerator_1.default();
+let geo = new geoGenerator_1.default();
+let user = new userGenerator_1.default();
+let post = new postGenerator_1.default();
+ad.generate();
+ad.generateJSON("addresses");
+geo.generate();
+geo.generateJSON("geos");
+company.generate();
+company.generateJSON("companies");
+post.generate();
+post.generateJSON("posts");
+user.generate();
+user.generateJSON("users");

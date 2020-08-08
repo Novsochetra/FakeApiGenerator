@@ -7,10 +7,11 @@
     "postinstall": "yarn build",
     "test": "jest",
     "tsc": "ts-node ./module/**",
-    "build": "tsc --project ./",
-    "server": "nodemon server.ts",
-    "start": "cd ./build && node server.js",
-    "user": "npm run build && node ./build/module/user/index.js"
+    "build": "tsc --project ./ && yarn generate-api && cp -rf src/output build/src && cp -rf src/views build/src",
+    "start:dev": "nodemon ./src/server.ts",
+    "start": "cd ./build/src && node server.js",
+    "user": "npm run build && node ./build/module/user/index.js",
+    "generate-api": "ts-node src/generator.ts"
   },
   "keywords": [
     "json",
