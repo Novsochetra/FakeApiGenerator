@@ -50,9 +50,10 @@ const render500Page = (req: Request, res: Response): any => {
   });
 };
 
-app.use(vhost(config.HOST_NAME, mainApp));
+//app.use(vhost(config.HOST_NAME, mainApp));
+//app.use(vhost(config.HOST_NAME, mainApp));
 
-app.listen(config.PORT, (_req: Request, _res: Response): void => {
+mainApp.listen(config.PORT, (_req: Request, _res: Response): void => {
   console.log(
     `Example app listening at http://${config.HOST_NAME}:${config.PORT}`
   );
